@@ -18,12 +18,12 @@ import org.junit.jupiter.api.Test;
  */
 public class P355_Medium_DesignTwitter {
 
-    class Twitter {
+    static class TwitterImpl implements Twitter {
 
         private final Map<Integer, Set<Integer>> followees;
         private final List<Integer[]> feeds;
 
-        public Twitter() {
+        public TwitterImpl() {
             followees = new HashMap<>();
             feeds = new ArrayList<>();
         }
@@ -50,23 +50,51 @@ public class P355_Medium_DesignTwitter {
         }
     }
 
-    class TwitterTester {
+    public static final List<TwitterTesterCase> TWITTER_TESTER_CASES = List.of(
+        new TwitterTesterCase(
+            new String[]{"postTweet", "getNewsFeed", "follow", "postTweet", "getNewsFeed", "unfollow", "getNewsFeed"},
+            new int[][]{{1, 5}, {1}, {1, 2}, {2, 6}, {1}, {1, 2}, {1}},
+            new Integer[][]{null, new Integer[]{5}, null, null, new Integer[]{6, 5}, null, new Integer[]{5}}
+        )
+    );
 
-        private Twitter twitter = null;
+    @Test
+    void testTwitter() {
+        TwitterTester.test(new TwitterImpl());
+    }
 
-        Integer[][] execute(String[] operations, int[][] data) {
+    public interface Twitter {
+
+        void postTweet(int userId, int tweetId);
+
+        List<Integer> getNewsFeed(int userId);
+
+        void follow(int followerId, int followeeId);
+
+        void unfollow(int followerId, int followeeId);
+    }
+
+    public static class TwitterTester {
+
+        public static void test(Twitter twitter) {
+            for (TwitterTesterCase testerCase : TWITTER_TESTER_CASES) {
+                Assertions.assertArrayEquals(
+                    testerCase.expected(),
+                    execute(twitter, testerCase.operations(), testerCase.data())
+                );
+            }
+        }
+
+        static Integer[][] execute(Twitter twitter, String[] operations, int[][] data) {
             List<Integer[]> result = new ArrayList<>(operations.length);
             for (int i = 0; i < operations.length; i++) {
-                result.add(executeOperation(operations[i], data[i]));
+                result.add(executeOperation(twitter, operations[i], data[i]));
             }
             return result.toArray(new Integer[0][0]);
         }
 
-        Integer[] executeOperation(String operation, int[] data) {
+        static Integer[] executeOperation(Twitter twitter, String operation, int[] data) {
             switch (operation) {
-                case "Twitter":
-                    twitter = new Twitter();
-                    return null;
                 case "postTweet":
                     twitter.postTweet(data[0], data[1]);
                     return null;
@@ -85,17 +113,8 @@ public class P355_Medium_DesignTwitter {
 
     }
 
-    @Test
-    void testTwitter() {
-        TwitterTester tester = new TwitterTester();
-        Assertions.assertArrayEquals(
-            new Integer[][]{null, null, new Integer[]{5}, null, null, new Integer[]{6, 5}, null, new Integer[]{5}},
-            tester.execute(
-                new String[]{"Twitter", "postTweet", "getNewsFeed", "follow", "postTweet", "getNewsFeed", "unfollow",
-                    "getNewsFeed"},
-                new int[][]{{}, {1, 5}, {1}, {1, 2}, {2, 6}, {1}, {1, 2}, {1}}
-            )
-        );
+    public record TwitterTesterCase(String[] operations, int[][] data, Integer[][] expected) {
+
     }
 
 }
