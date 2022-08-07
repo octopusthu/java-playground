@@ -29,7 +29,7 @@ public class P2349_Medium_NumberContainers {
             }
             indexNumberMap.put(index, number);
             if (oldNumber != null) {
-                numberIndicesMap.get(oldNumber).remove(index);
+                numberIndicesMap.get(oldNumber).remove((Integer) index);
             }
 
             List<Integer> indices = numberIndicesMap.computeIfAbsent(number, k -> new ArrayList<>());
