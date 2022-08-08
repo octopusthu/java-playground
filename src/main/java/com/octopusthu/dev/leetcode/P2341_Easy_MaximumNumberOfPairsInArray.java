@@ -1,26 +1,25 @@
 package com.octopusthu.dev.leetcode;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class P2341_Easy_MaximumNumberOfPairsInArray {
 
     private int[] numberOfPairs(int[] nums) {
-        int[] result = new int[]{0, nums.length};
-        Set<Integer> set = new HashSet<>();
+        int length = nums.length;
+        int pairs = 0;
+        Map<Integer, Boolean> map = new HashMap<>(length);
         for (int num : nums) {
-            if (set.contains(num)) {
-                set.remove(num);
-                result[0]++;
-                result[1] -= 2;
-            } else {
-                set.add(num);
+            boolean odd = Boolean.TRUE.equals(map.get(num));
+            if (odd) {
+                pairs++;
             }
+            map.put(num, !odd);
         }
-        return result;
+        return new int[]{pairs, length - pairs * 2};
     }
 
     @Test
