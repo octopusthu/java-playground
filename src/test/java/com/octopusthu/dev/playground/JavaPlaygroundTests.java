@@ -27,6 +27,6 @@ public class JavaPlaygroundTests {
         } else {
             System.out.print("B");
         }
-        assertEquals("AB", outputStreamCaptor.toString().trim());
+        assertEquals("AB", outputStreamCaptor.toString());
     }
 }
