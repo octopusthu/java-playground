@@ -14,16 +14,16 @@ public class RemoveArrayElementTest {
     @BeforeAll
     static void init() {
         testData = new Object[][]{
-            new Object[]{new int[]{1, 2, 3}, 1, List.of(2, 3)},
-            new Object[]{new int[]{3, 2, 1, 3}, 3, List.of(2, 1)},
-            new Object[]{new int[]{2, 2, 1, 1}, 2, List.of(1, 1)},
-            new Object[]{new int[]{1, 1, 2, 2}, 2, List.of(1, 1)},
-            new Object[]{new int[]{}, 1, List.of()},
-            new Object[]{new int[]{1}, 1, List.of()},
-            new Object[]{new int[]{1}, 2, List.of(1)},
-            new Object[]{new int[]{1, 2}, 1, List.of(2)},
-            new Object[]{new int[]{2, 1}, 1, List.of(2)},
-            new Object[]{new int[]{1, 1, 1}, 1, List.of()},
+            {new int[]{1, 2, 3}, 1, List.of(2, 3)},
+            {new int[]{3, 2, 1, 3}, 3, List.of(2, 1)},
+            {new int[]{2, 2, 1, 1}, 2, List.of(1, 1)},
+            {new int[]{1, 1, 2, 2}, 2, List.of(1, 1)},
+            {new int[]{}, 1, List.of()},
+            {new int[]{1}, 1, List.of()},
+            {new int[]{1}, 2, List.of(1)},
+            {new int[]{1, 2}, 1, List.of(2)},
+            {new int[]{2, 1}, 1, List.of(2)},
+            {new int[]{1, 1, 1}, 1, List.of()},
         };
     }
 

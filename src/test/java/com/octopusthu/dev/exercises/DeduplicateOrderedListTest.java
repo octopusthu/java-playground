@@ -12,13 +12,13 @@ public class DeduplicateOrderedListTest {
     @BeforeAll
     static void init() {
         testData = new Integer[][][]{
-            new Integer[][]{new Integer[]{1, 2, 3, 3, 4, 4, 5}, new Integer[]{1, 2, 3, 4, 5}},
-            new Integer[][]{new Integer[]{1, 2, 3, 3, 3, 4}, new Integer[]{1, 2, 3, 4}},
-            new Integer[][]{new Integer[]{1, 1, 2, 3, 4, 5}, new Integer[]{1, 2, 3, 4, 5}},
-            new Integer[][]{new Integer[]{1, 2, 3, 4, 5, 5}, new Integer[]{1, 2, 3, 4, 5}},
-            new Integer[][]{new Integer[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5}, new Integer[]{1, 2, 3, 4, 5}},
-            new Integer[][]{new Integer[]{1}, new Integer[]{1}},
-            new Integer[][]{new Integer[]{1, 1, 1}, new Integer[]{1}},
+            {{1, 2, 3, 3, 4, 4, 5}, {1, 2, 3, 4, 5}},
+            {{1, 2, 3, 3, 3, 4}, {1, 2, 3, 4}},
+            {{1, 1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}},
+            {{1, 2, 3, 4, 5, 5}, {1, 2, 3, 4, 5}},
+            {{1, 1, 2, 2, 3, 3, 4, 4, 5, 5}, {1, 2, 3, 4, 5}},
+            {{1}, {1}},
+            {{1, 1, 1}, {1}},
         };
     }
 
