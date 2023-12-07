@@ -1,5 +1,6 @@
 package com.octopusthu.dev.exercises;
 
+import com.octopusthu.dev.exercises.DeduplicateOrderedList.ListNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
