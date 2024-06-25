@@ -35,7 +35,7 @@ public class RemoveArrayElementTest {
             int val = (int) data[1];
             @SuppressWarnings("unchecked")
             List<Integer> expected = (List<Integer>) data[2];
-            int remained = target.removeArrayElement(arr, val);
+            int remained = target.removeByPointersAtBothEnds(arr, val);
             assertResult(arr, remained, expected);
         }
     }

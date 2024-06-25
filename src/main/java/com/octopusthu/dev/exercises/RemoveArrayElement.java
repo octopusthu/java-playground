@@ -10,7 +10,7 @@ package com.octopusthu.dev.exercises;
  * Space complexity must be O(1)
  */
 public class RemoveArrayElement {
-    int removeArrayElement(int[] arr, int val) {
+    int removeByPointersAtBothEnds(int[] arr, int val) {
         if (arr == null || arr.length == 0) {
             return 0;
         }
@@ -34,5 +34,10 @@ public class RemoveArrayElement {
         }
         // p1 == p2 or p1 == p2 + 1
         return arr[p1] == val ? p1 : p1 + 1;
+    }
+
+    int removeBySlowAndFastPointers(int[] arr, int val) {
+        // TODO
+        return 0;
     }
 }
